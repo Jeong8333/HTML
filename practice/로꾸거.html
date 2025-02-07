@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로꾸꺼</title>
+</head>
+<body>
+    <h3>텍스트를 입력받아 거꾸로 출력하시오</h3>
+    <hr>
+    <script>
+        // ex 이효리
+        // 거꾸로 출력 리,효,이
+
+        //1.사용자 입력
+        let text = prompt("거꾸로 만들 단어를 입력하세요.");
+        //2.자른다 split('') <--텍스트 1칸씩 자름
+        let sp_text = text.split("");
+        //3.반전시킨다.
+        sp_text.reverse();
+        //4.결합하여 출력
+        let TEXT = sp_text.join(',');
+
+
+        document.write("거꾸로하면: "+TEXT);
+    </script>
+</body>
+</html>

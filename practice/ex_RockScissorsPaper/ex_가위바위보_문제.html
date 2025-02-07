@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<style>
+	body { text-align:center}
+	span { font-size: 30px;}
+	#vs_id { font-size: 100px; color: red;}
+</style>
+<meta charset = "UTF-8">
+<title> 가위바위보 </title>
+<script>
+	document.write("<h1>컴퓨터 가위, 바위, 보 맞추기</h1>");
+	let game = prompt("가위, 바위, 보 중 선택하세요?", "가위");
+	let com = Math.ceil( Math.random() * 3 ); //1, 2 , 3
+	// 1. 사용자 입력 가위->1, 바위->2, 보->3 으로 변경
+	let user = 0;
+	switch(game){
+		case "가위": user = 1;
+			break;
+		case "바위": user = 2;
+			break;
+		case "보": user = 3;
+			break;
+		default: alert("잘못 입력하셨습니다!!");
+		location.reload();   //f5 새로고침
+	}
+	console.log("컴퓨터:", com,"사용자:",user);
+	// 2. 컴퓨터 랜덤값과 사용자 입력에 해당하는 이미지 출력
+	
+	document.write("<div>");
+	document.write("<span>");
+	document.write("<span>");
+	document.write("<img ");
+	document.write("src='./images/math_com_"+ com +".jpg' > ");
+	document.write("com vs user");
+	document.write("<img ");
+	document.write("src='./images/math_user_"+ user +".jpg' >");
+	document.write("</span>");			
+    document.write("</span>");
+	document.write("</div>");
+	
+	// 3. 가위바위보 계산(조건식) 이기는, 지는, 비기는 해당 조건에 따른 결과 출력(이미지)
+	
+
+	if(user == com){
+		document.write("<img ");
+		document.write("src='./images/game_"+ 3 +".jpg' >");
+	} else if((user == 1 && com ==3)||(user==2&&com==1)||(user==3&&com==2)){
+		document.write("<img ");
+		document.write("src='./images/game_"+ 1 +".jpg' >");
+	} else if ((user == 1 && com ==2)||(user==2&&com==3)||(user==3&&com==1)){
+		document.write("<img ");
+		document.write("src='./images/game_"+ 2 +".jpg' >");
+	}
+		
+	
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

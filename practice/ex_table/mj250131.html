@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사이트 홈 화면 만들기</title>
+    <style>
+        body, html{
+            margin: 0; padding: 0;
+        }
+        .fullscreen{
+            z-index: -2;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("./bali.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #menubar {margin-left: 20px; z-index: 2;background-color: black; opacity: 0.5; height: 35px;}
+        #menubar ul li a{color: white; text-decoration: none; font-size: 25px;}
+        #menubar ul {margin: 30px; padding-left: 50px; width: 100%;}
+        #menubar ul li{display: inline;list-style-type: none;
+                        left: 15px; right: 15px; padding: 0px 30px;}
+        #menubar ul li a:hover{color: violet;}
+    </style>
+</head>
+<body>
+    <div id = "menubar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Kuta</a></li>
+            <li><a href="#">Seminyak</a></li>
+            <li><a href="#">Ubud</a></li>
+        </ul>
+    </div>
+    <div class="fullscreen"></div>
+</body>
+</html>
