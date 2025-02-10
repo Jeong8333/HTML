@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image 객체(이미지 로딩)</title>
+    <style>img{width :200px;}</style>
+    <script>
+        let files = ["./img/1.jpg","./img/2.jpg","./img/3.jpg","./img/4.jpg","./img/5.jpg",
+                    "./img/6.jpg","./img/7.jpg","./img/8.jpg"];  // 텍스트 배열에 경로만 있는 배열
+        let imgArr = [];
+        for(let i = 0; i < files.length; i++){
+            imgArr[i] = new Image();  // 이미지 객체 생성
+            imgArr[i].src = files[i];  // 해당 이미지 객체에 이미지 경로등록(load이벤트)
+        }
+        let idx = 0;
+        function fn_left(obj){
+            let imgL = document.getElementById('img_id');
+            if(idx == 0){
+                idx = imgArr.length;
+            }
+            idx--;
+            imgL.src = imgArr[idx].src;
+            idx %= imgArr.length;
+           
+        } 
+        
+        function fn_right(obj){
+           
+            let imgR = document.getElementById('img_id');
+            if(idx == imgArr.length-1){
+                idx = -1;
+            }
+            idx++;
+            imgR.src = imgArr[idx].src;
+            
+        } 
+
+    </script>
+</head>
+<body>
+   <h3>이미지를 클릭하면 다음 이미지를 보여줌</h3> 
+   <hr>
+   <div>
+    <!-- 왼쪽 버튼 클릭시 이전 이미지-->
+    <button type="button" onclick="fn_left(this)"> < </button>
+    <img src="./img/1.jpg" id="img_id" alt="">
+    <!-- 왼쪽 버튼 클릭시 다음 이미지-->
+    <button type="button" onclick="fn_right(this)"> > </button>
+    <!-- 9-15와 다른 점은 click이벤트 대상이 바뀌는게 아니라는 점.-->
+   </div>
+</body>
+</html>
