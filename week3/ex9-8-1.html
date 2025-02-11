@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이벤트 흐름</title>
     <script>
-        window.onload = function (){
+        //onload 이후 동작하도록
+        window.onload = function(){
             let div = document.getElementById('div_id');
             let btn = document.getElementById('btn');
             document.body.addEventListener('click', capture, true); // true 캡쳐 단계
@@ -20,7 +21,7 @@
             let tagName = obj.tagName;
             div.innerHTML += '<br> capture 단계:' + tagName + "태그" + e.type + "이벤트";
             if (tagName == 'INPUT') {
-                e.stopPropagation();  //이벤트의 흐름을 중단시킴킴
+                e.stopPropagation();  //이벤트의 흐름을 중단시킴
             }
         }
         function bubble(e) {
@@ -33,7 +34,7 @@
 
 <body>
     <p style="color: blue;">이것은
-        <span style="color: red;">문장 입니다.</span>
+        <spanid id="span_id" style="color: red;">문장 입니다.</span>
     </p>
     <input type="button" value="테스트" id="btn">
     <div id="div_id" style="color: green;"></div>

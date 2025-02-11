@@ -26,7 +26,7 @@
             //변경 대상
             let el = document.getElementById('span_id');
 
-            // a || b  <-- a가 없으면 ㅠ 선택, a가 있으면 a
+            // a || b  <-- a가 없으면 b 선택, a가 있으면 a
             let currentSize = el.style.fontsize || window.getComputedStyle(el).fontSize;
             let objText = obj.innerText;
             let fontSize = parseInt(currentSize); //숫자로 변환환
