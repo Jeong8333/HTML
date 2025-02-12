@@ -11,36 +11,25 @@
 							"김원진", "박정단", "박종욱", "송은호", "신미정",
 							"이예성", "이예은", "정지나", "최보석", "한수정"];
             //1.추첨하기 클릭시 classMate를 랜덤 순서로 셔플(javascript에는 shuffrle 함수 없음)
-            let newArray = [];
-            newArray = fn_shuffleArray(classMate);
-            console.log(newArray);
+            fn_shuffleArray(classMate);
+            
             //2.팀은 총 3팀으로 3개의 빈배열을 만들어 담아주고
-            let team1 = [];
-            let team2 = [];
-            let team3 = [];
-            let i;
-            for(i = 0 ; i < newArray.length; i++){
-                if(i>=10){
-                    team3.push(newArray[i]);
-                } else if (i<5){
-                    team1.push(newArray[i]);
-                } else{
-                    team2.push(newArray[i]);
-                }
+            let team_size = 3;
+            let teams = [];
+            for(i = 0 ; i < team_size; i++){
+                teams[i] = [];
+            }
+            for(let i = 0;i<classMate.length;i++){
+                let teamidx = i %team_size;
+                teams[teamidx].push(classMate[i]);
             }
            
             //3.화면에 출력 div id = 'teams'
             //               appendChild(css는 div의 class를 team-box 넣어주면 됨.)
-            let newbox = document.createElement('team-box');
-
-            newbox.innerHTML = 'team1';
-            newbox.innerHTML = 'team2';
-            newbox.innerHTML = 'team3';
-            
-            console.log(newbox);
-            document.getElementById('teams').innerHTML = newbox; 
+            displayTeams(teams);
             
         }
+
         function fn_shuffleArray(arr){
             // 가장 쉬운 셔플 알고리즘(Fisher oYates shuffle)
             //1.배열의 마지막 요소부터(아직 섞이지 않은 요소와 랜덤하게 교환)
@@ -54,6 +43,17 @@
             }
             return arr;
         }
+        function displayTeams(teams){
+            let div = document.getElementById('teams');
+            div.innerHTML='';
+            for(let i = 0; i<teams.length;i++){
+                let newDiv = document.createElement("div");
+                newDiv.setAttribute("class","team-box");
+                newDiv.innerHTML = `<h3>팀 ${i+1} </h3><p>${teams[i].join(',')}</p>`;
+                div.appendChild(newDiv);
+            }
+        }
+
     </script>
 </head>
 <body>
