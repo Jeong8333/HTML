@@ -27,14 +27,21 @@
     </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
-        function fn_addr(){
-            new daum.Postcode({
-            oncomplete: function (data) {
-                console.log(data);
-                document.getElementById('validationCustom03').value=data.address;
-            }
-        }).open();
-        }
+        // function fn_addr(){
+        //     new daum.Postcode({
+        //     oncomplete: function (data) {
+        //         console.log(data);
+        //         document.getElementById('validationCustom03').value=data.address;
+        //     }
+        // }).open();
+        // }
+        $("#validationCustom03").click(function () {
+                    new daum.Postcode({
+                    oncomplete: function (data) {
+                        $("#validationCustom03").val(data.address);
+                    }
+                }).open();
+            });
     </script>
 </head>
 
