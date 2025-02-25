@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인 프로젝트</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        /* Javascript Sample*/
+            var xhr = new XMLHttpRequest();
+            var url = 'http://api.kcisa.kr/openapi/CNV_060/request'; /*URL*/
+            var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + '6c01e70c-b7d5-45a8-87ad-9266be5e7ae9'; /*서비스키*/
+            queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('20'); /*세션당 요청레코드수*/
+            queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /*페이지수*/
+            queryParams += '&' + encodeURIComponent('dtype') + '=' + encodeURIComponent('뮤지컬'); /*분류명(연극, 뮤지컬, 오페라, 음악, 콘서트, 국악, 무용, 전시, 기타)*/
+            queryParams += '&' + encodeURIComponent('title') + '=' + encodeURIComponent('빨래'); /*제목(2자이상)*/
+
+            xhr.open('GET', url + queryParams);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+
+                    console.log('status: ' + this.status);
+                    console.log('resultCode: ' + $(this.responseText).find('resultCode').text());
+                    console.log('resultMsg: ' + $(this.responseText).find('resultMsg').text());
+
+                    var item = $(this.responseText).find('item');
+                    $(item).each(function () {
+
+                        console.log("title" + $(this).find("title").text());
+                        console.log("type" + $(this).find("type").text());
+                        console.log("period" + $(this).find("period").text());
+                        console.log("eventPeriod" + $(this).find("eventPeriod").text());
+                        console.log("eventSite" + $(this).find("eventSite").text());
+                        console.log("charge" + $(this).find("charge").text());
+                        console.log("contactPoint" + $(this).find("contactPoint").text());
+                        console.log("url" + $(this).find("url").text());
+                        console.log("imageObject" + $(this).find("imageObject").text());
+                        console.log("description" + $(this).find("description").text());
+                        console.log("viewCount" + $(this).find("viewCount").text());
+
+
+
+                        // 테이블에 추가
+                        let title = $(this).find("title").text();
+                        let type = $(this).find("type").text();
+                        let period = $(this).find("period").text();
+                        let description = $(this).find("description").text();
+
+                        let row = `<tr>
+                            <td>${title}</td>
+                            <td>${type}</td>
+                            <td>${period}</td>
+                            <td>${description}</td></tr>`;
+                        $("#caList").append(row);
+
+                    });
+
+                };
+
+            }
+            xhr.send('');
+    </script>
+</head>
+<body>
+    <table>
+        <colgroup>
+            <col style="width: 10%;"></col>
+            <col style="width: 10%;"></col>
+            <col style="width: 10%;"></col>
+            <col style="width: 70%;"></col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>제목</th>
+                <th>분야</th>
+                <th>기간</th>
+                <th>설명</th>
+            </tr>
+        </thead>
+        <tbody id="caList"></tbody>
+    </table>
+</body>
+</html>
