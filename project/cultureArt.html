@@ -8,7 +8,7 @@
     <script>
         /* Javascript Sample*/
             var xhr = new XMLHttpRequest();
-            var url = 'http://api.kcisa.kr/openapi/CNV_060/request'; /*URL*/
+            var url = 'http://api.kcisa.kr/openapi/CNV_060/request?serviceKey=6c01e70c-b7d5-45a8-87ad-9266be5e7ae9&numOfRows=20&pageNo=1&dtype=%EB%AE%A4%EC%A7%80%EC%BB%AC&title=%EC%95%8C%EB%9D%BC%EB%94%98'; /*URL*/
             var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + '6c01e70c-b7d5-45a8-87ad-9266be5e7ae9'; /*서비스키*/
             queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('20'); /*세션당 요청레코드수*/
             queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /*페이지수*/
