@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개인 프로젝트</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
-        /* Javascript Sample*/
-            var xhr = new XMLHttpRequest();
-            var url = 'http://api.kcisa.kr/openapi/CNV_060/request?serviceKey=6c01e70c-b7d5-45a8-87ad-9266be5e7ae9&numOfRows=20&pageNo=1&dtype=%EB%AE%A4%EC%A7%80%EC%BB%AC&title=%EC%95%8C%EB%9D%BC%EB%94%98'; /*URL*/
-        
-
-            
+        $(document).ready(function () {
+            $("btn").click(function () {
+                $.ajax({
+                    url: "http://api.kcisa.kr/openapi/CNV_060/request?serviceKey=6c01e70c-b7d5-45a8-87ad-9266be5e7ae9&numOfRows=20&pageNo=1&dtype=%EB%AE%A4%EC%A7%80%EC%BB%AC&title=%EC%95%8C%EB%9D%BC%EB%94%98"  /*URL*/
+                    , method: "GET"
+                    , dataType: "json"  // 응답 데이터 타입
+                    , success: function (arr) {
+                        console.log(arr); // 응답 데이터(리턴 데이터)
+                        let nmList = res['items']['item'];
+                        let str = '';
+                        if(nmList.length != 0){
+                            nmList.forEach(function(v, i){
+                                str += '<tr>';
+                                str += '<td>' + v['title'] + '</td>';
+                                str += '<td>' + v['url'] + '</td>';
+                                str += '<td>' + v['description'] + '</td>';
+                                str += '</tr>';
+                            });
+                        }
+                        $("#List").append(str);
+                    }
+                    , error: function (err) {
+                        console.log(err);
+                    }
+                });
+            });
+        });
     </script>
 </head>
+
 <body>
+    <button type="button" id="btn">불러오기</button>
     <table>
-        <colgroup>
-            <col style="width: 10%;"></col>
-            <col style="width: 10%;"></col>
-            <col style="width: 10%;"></col>
-            <col style="width: 70%;"></col>
-        </colgroup>
-        <thead>
-            <tr>
-                <th>제목</th>
-                <th>분야</th>
-                <th>기간</th>
-                <th>설명</th>
-            </tr>
-        </thead>
-        <tbody id="caList"></tbody>
+        <tbody id="List">
+        </tbody>
     </table>
+
 </body>
+
 </html>
