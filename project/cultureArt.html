@@ -16,52 +16,27 @@
         $(document).ready(function () {
             $("btn").click(function () {
                 $.ajax({
-                    url: "http://api.kcisa.kr/openapi/CNV_060/request?serviceKey=6c01e70c-b7d5-45a8-87ad-9266be5e7ae9&numOfRows=20&pageNo=1&dtype=%EB%AE%A4%EC%A7%80%EC%BB%AC&title=%EC%95%8C%EB%9D%BC%EB%94%98"  /*URL*/
+                    url: "http://api.kcisa.kr/openapi/CNV_060/request?serviceKey=6c01e70c-b7d5-45a8-87ad-9266be5e7ae9&numOfRows=10&pageNo=1&dtype=뮤지컬&title=알라딘"  /*URL*/
+                    /*API Key = 6c01e70c-b7d5-45a8-87ad-9266be5e7ae9*/
                     , method: "GET"
                     , dataType: "json"  // 응답 데이터 타입
                     , success: function (arr) {
                         console.log(arr); // 응답 데이터(리턴 데이터)
-                        let nmList = res['items']['item'];
+                        // let nmList = res['items']['item'];
                         let str = '';
-                        if(nmList.length != 0){
-                            nmList.forEach(function(v, i){
-                                str += '<tr>';
-                                str += '<td>' + v['title'] + '</td>';
-                                str += '<td>' + v['url'] + '</td>';
-                                str += '<td>' + v['description'] + '</td>';
-                                str += '</tr>';
-                            });
+                        for(let i = 0; i < arr.length; i++){
+                            str += '<tr onclick="get_detail(\' '+arr[i]['items']['item']+' \')">';  //동적인 값 표현
+                            str += '<tr>';
+                            str += '<td>' + v['title'] + '</td>';    //제목
+                            str += '<td>' + v['period'] + '</td>';   //기간
+                            str += '<td>' + v['eventSite'] + '</td>';//장소
+                            str += '<td>' + v['url'] + '</td>';      //URL
+                            str += '<td>' + v['description'] + '</td>';  //설명
+                            str += '</tr>';
                         }
-                        $("#List").append(str);
+                        $("#List").html(str);
                     }
                     , error: function (err) {
-                        console.log(err);
-                    }
-                });
-            });
-        });
-        $(document).ready(function(){
-            $("#btn").click(function(){
-                // jquery $.ajax는 비동기적으로 데이터를 주고 받기 위해 사용되는 함수
-                // GET, POST 등의 요청 방식을 지정할 수 있으면
-                // 요청 데이터, 응답 데이터, 처리방법, 오류 처리 등을 세밀하게 설정가능.
-                $.ajax({
-                    url : "https://api.upbit.com/v1/market/all"
-                    ,method:"GET"
-                    ,dataType:"json"  // 응답 데이터 타입
-                    ,success:function(arr){ 
-                        console.log(arr); // 응답 데이터(리턴 데이터)
-                        let str ='';
-                        for(let i = 0; i < arr.length; i++){
-                        str += '<tr onclick="get_detail(\' '+arr[i]['market']+' \')">';  //동적인 값 표현
-                        str += '<td>' + arr[i]['market'] + '</td>';
-                        str += '<td>' + arr[i]['korean_name'] + '</td>';
-                        str += '<td>' + arr[i]['english_name'] + '</td>';
-                        str += '</tr>';
-                        }
-                        $("#coinList").html(str);
-                    }
-                    ,error:function(err){
                         console.log(err);
                     }
                 });
@@ -74,7 +49,7 @@
     <button type="button" id="btn">요청</button>
     <div class="row">
         <div id="left_div">
-            <table id="coinList"></table>
+            <table id="List"></table>
         </div>
         <div id="right_div">
             <table id="coin_detail"></table>
