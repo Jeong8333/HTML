@@ -10,11 +10,11 @@
         /* Javascript Sample*/
             var xhr = new XMLHttpRequest();
             var url = 'http://api.kcisa.kr/openapi/CNV_060/request'; /*URL*/
-            var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + '6c01e70.c-b7d5-45a8-87ad-9266be5e7ae9'; /*서비스키*/
+            var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + '6c01e70c-b7d5-45a8-87ad-9266be5e7ae9'; /*서비스키*/
             queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /*세션당 요청레코드수*/
             queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /*페이지수*/
-            queryParams += '&' + encodeURIComponent('dtype') + '=' + encodeURIComponent('뮤지컬'); /*분류명(연극, 뮤지컬, 오페라, 음악, 콘서트, 국악, 무용, 전시, 기타)*/
-            queryParams += '&' + encodeURIComponent('title') + '=' + encodeURIComponent('지킬앤하이드'); /*제목(2자이상)*/
+            queryParams += '&' + encodeURIComponent('dtype') + '=' + encodeURIComponent('전시'); /*분류명(연극, 뮤지컬, 오페라, 음악, 콘서트, 국악, 무용, 전시, 기타)*/
+            queryParams += '&' + encodeURIComponent('title') + '=' + encodeURIComponent('사진'); /*제목(2자이상)*/
 
             xhr.open('GET', url + queryParams);
             xhr.onreadystatechange = function () {

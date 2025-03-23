@@ -17,7 +17,7 @@
             $("btn").click(function () {
                 $.ajax({
                     url: "http://api.kcisa.kr/openapi/CNV_060/request?serviceKey=6c01e70c-b7d5-45a8-87ad-9266be5e7ae9&numOfRows=10&pageNo=1&dtype=뮤지컬&title=알라딘"  /*URL*/
-                    /*API Key = 6c01e70c-b7d5-45a8-87ad-9266be5e7ae9*/
+                    /*API Key = 6c01e70c-b7d5-45a8-87ad-9266be5e7ae9  */
                     , method: "GET"
                     , dataType: "json"  // 응답 데이터 타입
                     , success: function (arr) {
@@ -33,8 +33,10 @@
                             str += '<td>' + v['url'] + '</td>';      //URL
                             str += '<td>' + v['description'] + '</td>';  //설명
                             str += '</tr>';
+                            console.log(str);
                         }
                         $("#List").html(str);
+                        
                     }
                     , error: function (err) {
                         console.log(err);
