@@ -8,11 +8,11 @@
     <script>
         window.onload = function(){
             let calendarEl = document.getElementById('calendar');
-            // let current = [{"title": "일정1", "start":"2025-02-24"}
-            //                 ,{"title": "일정2", "start":"2025-02-26"}
-            // ];
+            let current = [{"title": "일정1", "start":"2025-02-24"}
+                             ,{"title": "일정2", "start":"2025-02-26"}
+            ];
             // localStorage.setItem("userEvents", JSON.stringify(current));
-            let current = fn_getData();
+            //let current = fn_getData();
 
             let calendar = new FullCalendar.Calendar(calendarEl, {
                  initialView : 'dayGridMonth'
