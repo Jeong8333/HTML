@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>공연 리뷰 작성</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f3efeb;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin-top: 80px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-wrapper {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .poster-box img {
+      width: 225px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-and-form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-box {
+      font-size: 1rem;
+      line-height: 2;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-item strong {
+      width: 80px;
+      display: inline-block;
+      color: #555;
+    }
+
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      color: #555;
+    }
+
+    .form-control {
+      border-radius: 0.5rem;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background-color: #bd5d38;
+      border-color: #bd5d38;
+    }
+
+    .btn-primary:hover {
+      background-color: #c77556;
+      border-color: #c77556;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form action="/reviewWriteDo" method="post">
+      <!-- 포스터 + 오른쪽 내용 -->
+      <div class="review-wrapper">
+        <!-- 포스터 -->
+        <div class="poster-box">
+          <img src="https://dummyimage.com/225x300/edecc7/000000.jpg" alt="포스터" />
+        </div>
+
+        <!-- 입력 폼 -->
+        <div class="info-and-form">
+
+            <div class="form-section">
+            <div class="mb-3">
+              <label class="form-label">제목</label>
+              <input type="text" class="form-control" name="title" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">관람일</label>
+              <input type="date" class="form-control" name="ViewingDate" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">동행인</label>
+              <input type="text" class="form-control" name="Friend" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">평점</label>
+              <input type="number" class="form-control" name="Rating" min="0" max="5" step="0.1" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">내용</label>
+              <textarea class="form-control" name="boContent" rows="6"></textarea>
+            </div>
+
+            <input type="hidden" name="memId" value="${sessionScope.login.memId}" />
+            <button type="submit" class="btn btn-primary">등록</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
