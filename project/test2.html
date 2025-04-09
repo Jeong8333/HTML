@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* 요소 사이 간격 */
+            flex-wrap: wrap; /* 줄 바꿈이 필요하면 자동으로 */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <select class="search-filter">제목</select>
+        <select class="search-category">--전체--</select>
+        <input type="text" placeholder="검색어" class="search-input" />
+        <button class="search-button">
+          <i class="fas fa-search"></i> 검색
+        </button>
+        <div class="sort-box">
+          총 4건
+          <select>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+      
+</body>
+</html>
