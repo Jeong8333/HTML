@@ -5,9 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-      li>a:hover {
-        background-color:rgba(195, 193, 151, 0.49);
-      }
+      ul{
+            list-style-type:none;
+            padding: 0; 
+            margin: 0; 
+        }
+        .navbar-nav > li{
+            float: left;
+            position: relative; 
+        }
+        .navbar-nav > li > a{
+            padding: 10px 50px;
+        }
+        li a{
+            background-color: #fff;
+            text-decoration: none;
+            color: #000000;
+            display: block;
+            text-align: center;
+            padding: 10px;
+        }
+        /* 마우스 오버했을 때 색상 변경 */
+        li a:hover{
+            background-color:rgba(195, 193, 151, 0.49);
+            color: white;
+        }
+        /* 마우스 오버하지 않았을 때 서브 메뉴가 보이지 않도록 설정하기 */
+        .navbar-nav li ul{   
+            display: none;
+            position: absolute; 
+            top: 100%; 
+            left: 0; 
+            z-index: 1000; 
+            background-color: #fff;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+            white-space: nowrap; 
+            text-align: center; 
+            padding: 10px 0; 
+        }
+        .navbar-nav li:hover ul{
+            display: block;
+        }
+        /* 투명도(opacity)를 변경해서 설정하기. */
+        .navbar-nav li ul{
+            opacity:0;
+        }
+
+        .navbar-nav li:hover ul{
+            opacity:1;
+            transition: all 1s;
+        }
+
+        .navbar-nav li a{
+            transition: all 0.5s;
+        }
+        .nav-margin {
+            margin-bottom: 10px;
+            margin-top: 50px;
+        }
+        .font{
+            font-weight: bold;
+        }
+
+        .navbar-nav li ul li a {
+            padding: 10px 20px;
+        }
     </style>
     
 </head>
@@ -28,44 +90,86 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="./logo.jpg" width="200" style="margin-bottom: 10px;"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav" >
-              <li style="margin-left: 100px;" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    공연 정보
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">뮤지컬</a></li>
-                  <li><a class="dropdown-item" href="#">연극</a></li>
-                  <li><a class="dropdown-item" href="#">음악</a></li>
-                  <li><a class="dropdown-item" href="#">무용/발레</a></li>
-                  <li><a class="dropdown-item" href="#">전시</a></li>
-                  <li><a class="dropdown-item" href="#">기타</a></li>
-                </ul>
-              </li>
-              <li style="margin-left: 50px;" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    예매
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="https://tickets.interpark.com/">인터파크 티켓</a></li>
-                  <li><a class="dropdown-item" href="http://ticket.yes24.com/New/Main.aspx?Gcode=009_201">Yes24 티켓</a></li>
-                  <li><a class="dropdown-item" href="https://ticket.melon.com/main/index.htm">멜론 티켓</a></li>
-                  <li><a class="dropdown-item" href="https://www.ticketlink.co.kr/home">티켓 링크</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <ul class="nav navbar-nav navbar-right" style="margin-right:50px">
-            <li class="nav-item"  >
-              <a class="nav-link" href="#" >로그인</a>
-            </li>
-          </ul>
+          <ul class="navbar-nav" >
+            <a class="navbar-brand" href="#"><img src="./logo.jpg" width="200" style="margin-bottom: 10px;"></a>
+            <li style="margin-left: 100px;" class="nav-margin">
+                  <a  href="#" class="font">
+                      공연 정보
+                  </a>
+                  <ul>
+                    <li><a class="" href="#">뮤지컬</a></li>
+                    <li><a class="" href="#">연극</a></li>
+                    <li><a class="" href="#">음악</a></li>
+                    <li><a class="" href="#">무용/발레</a></li>
+                    <li><a class="" href="#">전시</a></li>
+                    <li><a class="" href="#">기타</a></li>
+                  </ul>
+                </li>
+                <li style="margin-left: 50px;" class="nav-margin">
+                  <a href="#" class="font">
+                      예매
+                  </a>
+                  <ul>
+                    <li><a class="" href="https://tickets.interpark.com/">인터파크 티켓</a></li>
+                    <li><a class="" href="http://ticket.yes24.com/New/Main.aspx?Gcode=009_201">Yes24 티켓</a></li>
+                    <li><a class="" href="https://ticket.melon.com/main/index.htm">멜론 티켓</a></li>
+                    <li><a class="" href="https://www.ticketlink.co.kr/home">티켓 링크</a></li>
+                  </ul>
+                </li>
+                <li style="margin-left: 200px;" class="nav-margin">
+                  <a href="#" class="font">
+                      로그인
+                  </a>
+                  </li>
+              </ul>
         </div>
   </nav>
+  <div id="carouselExampleIndicators" class="carousel slide">
+	  <div class="carousel-indicators">
+	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	  </div>
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+        <div class="card text-bg-dark">
+          <img src="https://dummyimage.com/1600x500/edecc7/000000.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small>Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+	    </div>
+	    <div class="carousel-item">
+	      <div class="card text-bg-dark">
+          <img src="https://dummyimage.com/1600x500/edecc7/000000.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small>Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+	    </div>
+	    <div class="carousel-item">
+	      <div class="card text-bg-dark">
+          <img src="https://dummyimage.com/1600x500/edecc7/000000.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small>Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+	    </div>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Previous</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Next</span>
+	  </button>
+	</div>
 </body>
 </html>
