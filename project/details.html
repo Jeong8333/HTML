@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>공연 상세 페이지</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        background: #fefcf9;
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+
+    .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    }
+
+    .logo {
+    font-weight: bold;
+    }
+
+    .nav a {
+    margin: 0 8px;
+    text-decoration: none;
+    color: #333;
+    }
+
+    .nav .highlight {
+    font-weight: bold;
+    color: #8b0000;
+    }
+
+    .main-content {
+    padding: 40px;
+    }
+
+    .performance-summary {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    }
+
+    .poster {
+    width: 220px;
+    height: 300px;
+    background-color: #f2ece6;
+    }
+
+    .info {
+    flex: 1;
+    }
+
+    .title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    }
+
+    .details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    }
+
+    .details li {
+    margin-bottom: 8px;
+    }
+
+    .reserve-btn {
+    background-color: #f3eee9;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    }
+
+    .tabs {
+    border-top: 1px solid #aaa;
+    }
+
+    .tab-menu {
+    display: flex;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    }
+
+    .tab {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    border-right: 1px solid #ccc;
+    background-color: #f9f9f9;
+    }
+
+    .tab:last-child {
+    border-right: none;
+    }
+
+    .tab.active {
+    background-color: #fff;
+    font-weight: bold;
+    }
+
+    .tab-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f5f0ea;
+    }
+
+    .content-box {
+        height: 300px;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Ticket For Get</div>
+    <nav class="nav">
+      <a href="#">뮤지컬</a>
+      <a href="#">연극</a>
+      <a href="#">오페라</a>
+      <a href="#">무용</a>
+      <a href="#">국악</a>
+      <a href="#">음악</a>
+      <a href="#">콘서트</a>
+      <a href="#">전시</a>
+      <a href="#" class="highlight">예매</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="performance-summary">
+      <div class="poster"></div>
+      <div class="info">
+        <div class="category">분야</div>
+        <h1 class="title">공연 제목</h1>
+        <ul class="details">
+          <li><strong>기간:</strong> </li>
+          <li><strong>장소:</strong> </li>
+          <li><strong>관람 시간:</strong> </li>
+          <li><strong>관람 연령:</strong> </li>
+          <li><strong>가격:</strong> </li>
+        </ul>
+        <button class="reserve-btn">예매하기</button>
+      </div>
+    </section>
+
+    <section class="tabs">
+      <div class="tab-menu">
+        <button class="tab active">상세 정보</button>
+        <button class="tab">공연장 정보</button>
+        <button class="tab">날씨</button>
+      </div>
+      <div class="tab-content">
+        <div class="content-box">내용이 여기에 표시됩니다.</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
