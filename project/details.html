@@ -113,8 +113,13 @@
     }
 
     .content-box {
-        height: 300px;
+      display: none;
     }
+
+    .content-box.active {
+      display: block;
+    }
+
 
   </style>
 </head>
@@ -158,9 +163,29 @@
         <button class="tab">날씨</button>
       </div>
       <div class="tab-content">
-        <div class="content-box">내용이 여기에 표시됩니다.</div>
+        <div class="content-box active" id="tab-1">상세 정보 내용입니다.</div>
+        <div class="content-box" id="tab-2">공연장 정보 내용입니다.</div>
+        <div class="content-box" id="tab-3">날씨 정보 내용입니다.</div>
       </div>
+      
     </section>
   </main>
 </body>
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.content-box');
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      // 탭 버튼 활성화 클래스 제거 및 추가
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // 콘텐츠 표시 제어
+      contents.forEach(c => c.classList.remove('active'));
+      document.getElementById(`tab-${index + 1}`).classList.add('active');
+    });
+  });
+</script>
+
 </html>
