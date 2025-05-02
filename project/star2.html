@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .star-container {
+            font-size: 36px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .star {
+            background: linear-gradient(to right, #EAB838, #EAB838 50%, #E0E2E7 50%);
+            color: transparent;
+            -webkit-background-clip: text;
+        }
+
+        .star-container .star-grade {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="star-container">
+        <p class="star">★★★★★</p>
+        <span class="star-grade">0.0</span>
+      </div>
+    
+      <form action="" id="form">
+        <input type="number" id="num" placeholder="테스트 점수 입력" step="0.1" min="0.0" max="5.0">
+        <button type="submit">입력</button>
+      </form>
+</body>
+<script>
+    const inputValue = document.querySelector('#num'),
+      form = document.querySelector('#form'),
+      star = document.querySelector('.star');
+    starGrade = document.querySelector('.star-grade');
+  
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // console.log(inputValue.value)
+      starGrade.innerText = inputValue.value;
+  
+      let starGradeNum = (inputValue.value / 5) * 100;
+      star.style.cssText = `background: linear-gradient(to right, #EAB838, #EAB838 ${starGradeNum}%, #E0E2E7 ${starGradeNum}%); color:transparent; background-clip: text;`
+    })
+  </script>
+</html>

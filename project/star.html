@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <style>
+        .star_rating {
+            width: 100%; 
+            box-sizing: border-box; 
+            display: inline-flex; 
+            float: left;
+            flex-direction: row; 
+            justify-content: flex-start;
+        }
+        .star_rating .star {
+            width: 25px; 
+            height: 25px; 
+            margin-right: 10px;
+            display: inline-block; 
+            background: url('./emptyStar.png') no-repeat; 
+            background-size: 100%; 
+            box-sizing: border-box; 
+        }
+        .star_rating .star.on {
+            width: 25px; 
+            height: 25px;
+            margin-right: 10px;
+            display: inline-block; 
+            background: url('./fullStar.png') no-repeat;
+            background-size: 100%; 
+            box-sizing: border-box; 
+        }
+
+        .star_box {
+            width: 400px;
+            box-sizing: border-box;
+            display: inline-block;
+            margin: 15px 0;
+            background: #F3F4F8;
+            border: 0;
+            border-radius: 10px;
+            height: 100px;
+            resize: none;
+            padding: 15px;
+            font-size: 13px;
+            font-family: sans-serif;
+        }
+        .btn02 {
+            display:block;
+            width: 400px;
+            font-weight: bold;
+            border: 0;
+            border-radius: 10px;
+            max-height: 50px;
+            padding: 15px 0;
+            font-size: 1.1em;
+            text-align: center;
+            background:bisque;
+        }
+    </style>
+</head>
+<body>
+    <h2>리뷰작성 폼</h2>
+
+    <div class ="star_rating">
+        <span class="star on" value="1"> </span>
+        <span class="star" value="2"> </span>
+        <span class="star" value="3"> </span>
+        <span class="star" value="4"> </span>
+        <span class="star" value="5"> </span>
+    </div>
+    <textarea class="star_box" placeholder="리뷰 내용을 작성해주세요." ></textarea>
+    <input type="submit" class="btn02" value="리뷰 등록"/>
+
+</body>
+<script>
+    $('.star_rating > .star').click(function() {
+        $(this).parent().children('span').removeClass('on');
+        $(this).addClass('on').prevAll('span').addClass('on');
+    })
+</script>
+</html>
